@@ -1,0 +1,57 @@
+CREATE TABLE IF NOT EXISTS public."Municipios_Lambert"
+(
+    id integer NOT NULL DEFAULT nextval('"Municipios Lambert_id_seq"'::regclass),
+    geom geometry(MultiPolygon,100000),
+    fid bigint,
+    "NOM_DPTO" character varying(254) COLLATE pg_catalog."default",
+    "COD_DPTO" character varying(254) COLLATE pg_catalog."default",
+    "NOM_MUN" character varying(254) COLLATE pg_catalog."default",
+    "COD_MUN" character varying(254) COLLATE pg_catalog."default",
+    "COD_MUN4" character varying(254) COLLATE pg_catalog."default",
+    "TASA_POBR" double precision,
+    "POBR_FISDL" character varying(20) COLLATE pg_catalog."default",
+    "PERIM_KM" double precision,
+    "AREA_KM2" double precision,
+    "POB_TOTAL" integer,
+    "POB_HOMB" integer,
+    "POB_MUJER" integer,
+    "Shape_Leng" double precision,
+    "Shape_Area" double precision,
+    CONSTRAINT "Municipios Lambert_pkey" PRIMARY KEY (id)
+)
+
+CREATE TABLE IF NOT EXISTS public."Puntos_Lambert"
+(
+    id integer NOT NULL DEFAULT nextval('"Puntos_Lambert_id_seq"'::regclass),
+    geom geometry(Point,100000),
+    fid bigint,
+    osm_id character varying COLLATE pg_catalog."default",
+    name character varying COLLATE pg_catalog."default",
+    barrier character varying COLLATE pg_catalog."default",
+    highway character varying COLLATE pg_catalog."default",
+    ref character varying COLLATE pg_catalog."default",
+    address character varying COLLATE pg_catalog."default",
+    is_in character varying COLLATE pg_catalog."default",
+    place character varying COLLATE pg_catalog."default",
+    man_made character varying COLLATE pg_catalog."default",
+    other_tags character varying COLLATE pg_catalog."default",
+    CONSTRAINT "Puntos_Lambert_pkey" PRIMARY KEY (id)
+)
+
+CREATE TABLE IF NOT EXISTS public."Red_Vial_Lambert"
+(
+    id integer NOT NULL DEFAULT nextval('"Red_Vial_Lambert_id_seq"'::regclass),
+    geom geometry(MultiLineString),
+    fid bigint,
+    osm_id character varying COLLATE pg_catalog."default",
+    name character varying COLLATE pg_catalog."default",
+    highway character varying COLLATE pg_catalog."default",
+    waterway character varying COLLATE pg_catalog."default",
+    aerialway character varying COLLATE pg_catalog."default",
+    barrier character varying COLLATE pg_catalog."default",
+    man_made character varying COLLATE pg_catalog."default",
+    railway character varying COLLATE pg_catalog."default",
+    z_order integer,
+    other_tags character varying COLLATE pg_catalog."default",
+    CONSTRAINT "Red_Vial_Lambert_pkey" PRIMARY KEY (id)
+)
